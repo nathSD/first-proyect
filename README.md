@@ -26,7 +26,6 @@ drive/
 ├── README.md
 └── .git/
 ```
-
 ## Requisitos previos
 
 - Node.js 18+
@@ -35,8 +34,6 @@ drive/
 - Git
 
 ## 1) Frontend
-
-Desde la carpeta `first-project`:
 
 ```bash
 npm install
@@ -51,7 +48,8 @@ http://localhost:5173
 
 ## 2) Backend
 
-Asegúrate de tener MySQL corriendo y crear la base de datos `registro`.
+Asegúrate de tener MySQL corriendo. La aplicación crea la base de datos `registro`
+automáticamente si el usuario tiene permisos para hacerlo.
 
 Luego configura la conexión en:
 
@@ -62,11 +60,17 @@ registrolps/src/main/resources/application.yaml
 Ejemplo:
 
 ```yaml
-spring.datasource.url: jdbc:mysql://localhost:3306/registro
-spring.datasource.username: root
-spring.datasource.password:
+spring.datasource.url: jdbc:mysql://localhost:3306/registro?createDatabaseIfNotExist=true&serverTimezone=UTC
+spring.datasource.username: ${DB_USERNAME:root}
+spring.datasource.password: ${DB_PASSWORD:}
 spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto: update
+```
+
+En PowerShell, antes de iniciar el backend, configura la contraseña de MySQL:
+
+```powershell
+$env:DB_PASSWORD = "TU_CONTRASEÑA_DE_MYSQL"
 ```
 
 Ahora ejecuta el backend:
@@ -75,6 +79,8 @@ Ahora ejecuta el backend:
 cd registrolps
 ./mvnw spring-boot:run
 ```
+
+En PowerShell de Windows, usa `.\mvnw.cmd spring-boot:run` desde `registrolps`.
 
 La API queda disponible en:
 
