@@ -1,16 +1,20 @@
 # Proyecto Login y Registro
 
-Este repositorio contiene dos proyectos principales:
+Aplicación web full stack con frontend en React y backend en Spring Boot para autenticación de usuarios con validaciones básicas.
 
-- `first-project`: frontend en React + Vite
-- `registrolps`: backend en Spring Boot
+## Tecnologías
 
-## Estructura
+- Frontend: React + Vite
+- Backend: Java + Spring Boot + JPA
+- Base de datos: MySQL
+
+## Estructura del proyecto
 
 ```text
 drive/
 ├── first-project/
 │   ├── src/
+│   ├── public/
 │   ├── package.json
 │   ├── vite.config.js
 │   └── ...
@@ -19,75 +23,112 @@ drive/
 │   ├── pom.xml
 │   ├── mvnw
 │   └── ...
-└── README.md
+├── README.md
+└── .git/
 ```
 
-## Requisitos
+## Requisitos previos
 
 - Node.js 18+
 - Java 21
 - MySQL
 - Git
 
-## Frontend
+## 1) Frontend
 
-1. Abre la terminal en `first-project`
-2. Instala dependencias:
+Desde la carpeta `first-project`:
 
 ```bash
 npm install
-```
-
-3. Ejecuta la app:
-
-```bash
 npm run dev
 ```
 
-4. La app queda disponible normalmente en:
+La aplicación normalmente se abre en:
 
 ```text
 http://localhost:5173
 ```
 
-## Backend
+## 2) Backend
 
-1. Asegúrate de tener MySQL corriendo.
-2. Crea la base de datos `registro`.
-3. Ajusta credenciales si es necesario en:
+Asegúrate de tener MySQL corriendo y crear la base de datos `registro`.
+
+Luego configura la conexión en:
 
 ```yaml
 registrolps/src/main/resources/application.yaml
 ```
 
-4. Desde la carpeta `registrolps`, ejecuta:
+Ejemplo:
+
+```yaml
+spring.datasource.url: jdbc:mysql://localhost:3306/registro
+spring.datasource.username: root
+spring.datasource.password:
+spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto: update
+```
+
+Ahora ejecuta el backend:
 
 ```bash
+cd registrolps
 ./mvnw spring-boot:run
 ```
 
-5. La API queda en:
+La API queda disponible en:
 
 ```text
 http://localhost:8080
 ```
 
-## Login
+## 3) Flujo de login y registro
 
-La autenticación usa:
+El sistema permite:
 
-- `usuario`
-- `password` (campo `ctrs` desde el frontend)
-- `tipo`
+- Registro de usuario con tipo de usuario
+- Validación de campos obligatorios
+- Verificación de usuario duplicado
+- Login con validación por usuario, contraseña y tipo
+- Mensaje de error si las credenciales no son correctas
+- Redirección a `/inicio` si el login es exitoso
 
-Flujo esperado:
+## 4) Endpoints principales
 
-- Credenciales incorrectas -> muestra mensaje de error
-- Credenciales correctas -> redirige a `/inicio`
+### Registro
+
+```http
+POST /api/usuario/registro
+```
+
+### Login
+
+```http
+POST /api/usuario/login
+```
+
+Payload esperado:
+
+```json
+{
+  "usuario": "nat123",
+  "ctrs": "123456",
+  "tipo": "Usuario_estandar"
+}
+```
+
+## 5) Validaciones esperadas
+
+- Usuario obligatorio
+- Contraseña obligatoria
+- Tipo de usuario obligatorio
+- Usuario duplicado no permitido
+- Contraseña incorrecta: muestra error
+- Datos correctos: redirige a la pantalla de inicio
 
 ## GitHub
 
-Repositorio actual:
+Repositorio del proyecto:
 
 ```text
 https://github.com/nathSD/first-proyect.git
