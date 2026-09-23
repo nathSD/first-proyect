@@ -1,0 +1,128 @@
+
+body {
+  font-family: 'Segoe UI';
+  background-color: azure;
+  justify-content: center;
+}
+
+.contenedor {
+  border-radius: 20px;
+  background-color: skyblue ;
+  justify-content: center;
+  padding: 15px;
+  width: 500px;
+  margin: auto;
+  box-shadow: 0 0 15px blue;
+}
+
+h1 {
+  font-family: 'Franklin Gothic Medium';
+  text-align: center;
+  color: royalblue ;
+}
+
+label {
+  font-family: monospace;
+  font-size: 15px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  width: 100%;
+  text-align: left;
+  display:block;
+}
+
+input {
+  box-sizing: border-box;
+  padding: 5px;
+  display: block;
+  width: 100%;
+}
+
+input[type="radio"] {
+  display: inline;
+  width: 100%;
+}
+
+.contenedorRadio {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 5px;
+}
+
+button{
+  width: 20%;
+}
+
+.contenedorBoton {
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  font-family:'Franklin Gothic Medium';
+  color: royalblue;
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+}
+
+/*
+body {
+  font-family: 'Lucida Sans';
+  background-color: white;
+}
+
+h1 {
+  color: blue;
+}
+
+label {
+  color: darkblue;
+}
+
+.boton {
+  font-family:'Lucida Sans';
+  padding: 10px 25px;
+  background-color: lightskyblue;
+  color: blue;
+  border: 2px solid blue;
+  border-Radius: 12px;
+  cursor: pointer;
+  font-Size: 16px;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+}
+
+.uni {
+  color: red;
+}
+
+.todo {
+  color: black;
+}
+
+.titulo {
+  color: darkblue;
+}
+
+.boton {
+  font-family: 'Gill Sans MT', sans-serif;
+  background-color: lightpink;
+  color: rgb(192, 45, 94);
+  border: 3px solid palevioletred;
+  border-radius: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+*/
